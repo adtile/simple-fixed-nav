@@ -1,0 +1,28 @@
+{
+  "name": "simple-fixed-nav",
+  "version": "0.0.0",
+  "description": "Responsive, fixed and  vanilla JavaScript navbar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adtile/simple-fixed-nav.git"
+  },
+  "keywords": [
+    "fixednav",
+    "fixed",
+    "nav",
+    "responsive",
+    "javascript",
+    "navbar",
+    "adtile"
+  ],
+  "author": "Adtile Technologies Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adtile/simple-fixed-nav/issues"
+  },
+  "homepage": "https://github.com/adtile/simple-fixed-nav#readme"
+}
