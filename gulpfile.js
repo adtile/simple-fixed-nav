@@ -1,6 +1,6 @@
 var path = require('path')
     ,gulp =  require('gulp')
-    ,babel = require('gulp-babel')
+    ,browserify = require('gulp-browserify')
     ,connect =  require('gulp-connect')
     ,less = require("gulp-less")
     ,ejs = require("gulp-ejs")
@@ -28,9 +28,9 @@ function ejsTask() {
 }
 
 function es6Task() {
-  gulp.src([path.join(src, "scripts/*.js"), '!' + path.join(src, "scripts/_*.js")])
-    .pipe(babel({
-      presets: ['es2015']
+  gulp.src([path.join(src, "scripts/*.js"), '!' + path.join(src, "scripts/_*.js")], {read: false })
+    .pipe(browserify({
+      transform: ['babelify']
     }))
     .pipe(gulp.dest(path.join(dest, "scripts")))
     .pipe(connect.reload());
