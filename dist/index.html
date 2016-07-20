@@ -7,41 +7,40 @@
   <meta name="keywords" content="fixednav,fixed,nav,responsive,navbar,adtile,javascript,html,css">
   <meta name="author" content="Adtile Technologies Inc.">
   <title>Simple Fixed Nav</title>
-  <link rel="stylesheet" type="text/css" href="./styles/fixedNav.css">
 
   <style type="text/css">
     * {
       box-sizing: border-box;
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="./styles/fixedNav.css">
+  <link rel="stylesheet" type="text/css" href="./styles/customStyles.css">
 </head>
 <body>
   <div class="n-container">
   <nav class="n-nav">
     <div class="n-wrapper">
-      <div class="n-logo">
-        <p>adtile</p>
-      </div>
-      <ul class="n-links n-active">
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-        <li><a href="">something</a></li>
-      </ul>
-      <div class="n-burger">
-        <div>test</div>
-      </div>
-    </div>
-  </nav>
+      <div>
+        <a href="./" class="n-logo n-anchor">
+          <p>Adtile <b>MotionStack</b></p>
+        </a>
+        <ul class="n-links">
+          
+          <li><a href="" class="n-anchor">something</a></li>
+          
+          <li><a href="" class="n-anchor">something</a></li>
+          
+          <li><a href="" class="n-anchor">something</a></li>
+          
+        </ul>
+        <a href="#" class="n-burger">
+         <div></div>
+         <div></div>
+         <div></div>
+       </a>
+     </div>
+   </div>
+ </nav>
 </div>
 
   <!-- TEST CONTENT -->
@@ -129,12 +128,5 @@
   <!-- END: TEST CONTENT -->
 
   <script type="text/javascript" src="./scripts/fixedNav.js"></script>
-  <script type="text/javascript">
-    window.fixedNav.init({
-      closeOnAnchorTap: true,
-      closeOnOutsideScroll: true,
-      closeOnOutsideTap: true
-    });
-  </script>
 </body>
 </html>

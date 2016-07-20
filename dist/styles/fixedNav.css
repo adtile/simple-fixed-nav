@@ -3,19 +3,26 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
 }
 .n-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3rem;
-  z-index: 3;
-  background-color: red;
+  height: 3.5rem;
+  z-index: 10;
+  background-color: white;
 }
 .n-wrapper {
-  position: absolute;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.n-wrapper div {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -27,62 +34,106 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 3rem;
-  vertical-align: middle;
+  height: 3.5rem;
 }
 .n-logo *,
 .n-links * {
   display: inline-block;
 }
 .n-logo {
-  z-index: 3;
   width: auto;
-  max-height: 3rem;
+  max-height: 3.5rem;
   background-image: url("http://www.adtile.me/img/logo-footer.png");
   background-size: auto 80%;
-  background-position: left center;
+  background-position: 0.3rem center;
   background-repeat: no-repeat;
-  padding-left: 3rem;
+  padding-left: 3.5rem;
+  z-index: 11;
 }
 .n-links {
   margin: 0;
   text-align: right;
-  z-index: 2;
 }
 .n-links li {
   list-style: none;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.n-anchor {
+  color: inherit;
+  text-decoration: none;
 }
 .n-burger {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: none;
-  width: $height;
-  height: $height;
-  z-index: 3;
-  background-color: green;
 }
-.n-burger > * {
-  position: relative;
-  height: 100%;
-}
-@media (max-width: 550px) {
+@media (max-width: 900px) {
   .n-links {
     top: 100%;
     height: auto;
-    max-height: 12rem;
+    max-height: 14rem;
     overflow: auto;
-    background-color: red;
+    background-color: white;
+    display: block;
+    z-index: 100;
+    padding-top: 0.9rem;
     text-align: left;
+    display: none;
   }
-  .n-links:not(.n-active) {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
+  .n-active .n-links {
+    display: block;
   }
   .n-links li {
     display: block;
   }
+  .n-logo p {
+    display: none;
+  }
   .n-burger {
     display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    background: transparent;
+    padding: 20px 0px 14px;
+    margin-right: 5px;
+    z-index: 300;
+  }
+  .n-active .n-burger div:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate3d(3px, 8px, 0);
+    -moz-transform: rotate(45deg) translate3d(3px, 8px, 0);
+    transform: rotate(45deg) translate3d(3px, 8px, 0);
+  }
+  .n-active .n-burger div:nth-child(2) {
+    opacity: 0;
+  }
+  .n-active .n-burger div:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate3d(3px, -8px, 0);
+    -moz-transform: rotate(-45deg) translate3d(3px, -8px, 0);
+    transform: rotate(-45deg) translate3d(3px, -8px, 0);
+  }
+  .n-burger div {
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 0.4s ease;
+    -moz-transition: -moz-transform 0.4s ease;
+    -moz-transition: transform .4s ease;
+    transition: transform .4s ease;
+    border-radius: 1px;
+    margin-left: 20px;
+    margin-bottom: 6px;
+    background: black;
+    height: 2px;
+    width: 28px;
   }
 }
