@@ -1,6 +1,6 @@
-function preventMultipleExecution(time, fn) {
+export function preventMultipleExecution(time, fn) {
   var prev = 0;
-  return function (...args) {
+  return (...args) => {
     var now = Date.now();
     if(now - prev > time) {
       prev = now;
@@ -9,23 +9,24 @@ function preventMultipleExecution(time, fn) {
   }
 }
 
-function preset(fn, presetArgs, context) {
-  return function (...args) {
-    return fn.apply(context, presetArgs.concat(args));
+export function preset(fn, args, context) {
+  return (...extra) => {
+    return fn.apply(context, args.concat(extra));
   };
 }
 
-function each(items, callback, context) {
-  for(var i = 0; i < items.length; i++) {
-    callback.call(context, items[i], i, items);
+export function each(collection, callback, context) {
+  for(var i = 0; i < collection.length; i++) {
+    callback.call(context, collection[i], i, collection);
   }
 }
 
-const preventFast = preset(preventMultipleExecution, [30]);
+export function serialize(...fns) {
+  return (...args) => {
+    fns.forEach(fn => {
+      fn(...args);
+    });
+  };
+}
 
-module.exports = {
-  preventMultipleExecution,
-  preset,
-  each,
-  preventFast
-};
+export const preventFast = preset(preventMultipleExecution, [30]);

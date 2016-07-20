@@ -7,13 +7,14 @@
   <meta name="keywords" content="fixednav,fixed,nav,responsive,navbar,adtile,javascript,html,css">
   <meta name="author" content="Adtile Technologies Inc.">
   <title>Simple Fixed Nav</title>
-  <link rel="stylesheet" type="text/css" href="./styles/fixedNav.css">
 
   <style type="text/css">
     * {
       box-sizing: border-box;
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="./styles/fixedNav.css">
+  <link rel="stylesheet" type="text/css" href="./styles/customStyles.css">
 </head>
 <body>
   <% include ./partials/_fixedNav %>
@@ -27,12 +28,5 @@
   <!-- END: TEST CONTENT -->
 
   <script type="text/javascript" src="./scripts/fixedNav.js"></script>
-  <script type="text/javascript">
-    window.fixedNav.init({
-      closeOnAnchorTap: true,
-      closeOnOutsideScroll: true,
-      closeOnOutsideTap: true
-    });
-  </script>
 </body>
 </html>
