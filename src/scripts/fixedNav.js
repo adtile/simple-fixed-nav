@@ -24,40 +24,39 @@ function add(elem, className, e) {
 }
 
 var fixedNav = window.fixedNav = {
+  toggle: preventFast(preset(toggle, [ul, active])),
+  close: preventFast(preset(remove, [ul, active])),
+  open: preventFast(preset(add, [ul, active])),
+  init(options) {
+    const closeOnAnchorTap = !!options.closeOnAnchorTap;
+    const closeOnOutsideScroll = !!options.closeOnOutsideScroll;
+    const closeOnOutsideTap = !!options.closeOnOutsideTap;
 
-};
-fixedNav.toggle = preventFast(preset(toggle, [ul, active]));
-fixedNav.close = preventFast(preset(remove, [ul, active]));
-fixedNav.open = preventFast(preset(add, [ul, active]));
-fixedNav.init = options => {
-  const closeOnAnchorTap = !!options.closeOnAnchorTap;
-  const closeOnOutsideScroll = !!options.closeOnOutsideScroll;
-  const closeOnOutsideTap = !!options.closeOnOutsideTap;
+    burger.addEventListener("touchend", fixedNav.toggle);
+    burger.addEventListener("click", fixedNav.toggle);
+    nav.addEventListener("scroll", e => e.stopPropagation());
 
-  burger.addEventListener("touchend", fixedNav.toggle);
-  burger.addEventListener("click", fixedNav.toggle);
+    if(closeOnAnchorTap) {
+      each(document.querySelectorAll(".n-links a"), function (a, i, all) {
+        a.addEventListener("touchend", fixedNav.close);
+        a.addEventListener("click", fixedNav.close);
+      });
+    }
 
-  nav.addEventListener("scroll", e => e.stopPropagation());
+    if(closeOnOutsideScroll) {
+      window.addEventListener("scroll", fixedNav.close);
+      // window.addEventListener("scroll", function () {
+      //   console.log("scrolling");
+      // })
+      document.body.addEventListener("touchmove", fixedNav.close);
+    }
 
-  if(closeOnAnchorTap) {
-    each(document.querySelectorAll(".n-links a"), function (a, i, all) {
-      a.addEventListener("touchend", fixedNav.close);
-      a.addEventListener("click", fixedNav.close);
-    });
-  }
-
-  if(closeOnOutsideScroll) {
-    window.addEventListener("scroll", fixedNav.close);
-    // window.addEventListener("scroll", function () {
-    //   console.log("scrolling");
-    // })
-    document.body.addEventListener("touchmove", fixedNav.close);
-  }
-
-  if(closeOnOutsideTap) {
-    document.body.addEventListener("click", fixedNav.close);
-    document.body.addEventListener("touchend", fixedNav.close);
+    if(closeOnOutsideTap) {
+      document.body.addEventListener("click", fixedNav.close);
+      document.body.addEventListener("touchend", fixedNav.close);
+    }
   }
 };
+
 
 
