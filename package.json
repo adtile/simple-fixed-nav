@@ -1,6 +1,6 @@
 {
   "name": "simple-fixed-nav",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha",
   "description": "Responsive, fixed and  vanilla JavaScript navbar.",
   "main": "index.js",
   "scripts": {
