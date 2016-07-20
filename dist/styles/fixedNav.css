@@ -1,0 +1,88 @@
+.n-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+}
+.n-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  z-index: 3;
+  background-color: red;
+}
+.n-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.n-logo,
+.n-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  vertical-align: middle;
+}
+.n-logo *,
+.n-links * {
+  display: inline-block;
+}
+.n-logo {
+  z-index: 3;
+  width: auto;
+  max-height: 3rem;
+  background-image: url("http://www.adtile.me/img/logo-footer.png");
+  background-size: auto 80%;
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 3rem;
+}
+.n-links {
+  margin: 0;
+  text-align: right;
+  z-index: 2;
+}
+.n-links li {
+  list-style: none;
+}
+.n-burger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  width: $height;
+  height: $height;
+  z-index: 3;
+  background-color: green;
+}
+.n-burger > * {
+  position: relative;
+  height: 100%;
+}
+@media (max-width: 550px) {
+  .n-links {
+    top: 100%;
+    height: auto;
+    max-height: 12rem;
+    overflow: auto;
+    background-color: red;
+    text-align: left;
+  }
+  .n-links:not(.n-active) {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  .n-links li {
+    display: block;
+  }
+  .n-burger {
+    display: block;
+  }
+}
