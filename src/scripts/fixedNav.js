@@ -2,31 +2,7 @@ const ul = document.querySelector(".n-links");
 const burger = document.querySelector(".n-burger");
 const nav = document.querySelector(".n-nav");
 const active = "n-active";
-
-function preventFastExecution(time, fn) {
-  var prev = 0;
-  return function (...args) {
-    var now = Date.now();
-    if(now - prev > time) {
-      prev = now;
-      return fn(...args);
-    }
-  }
-}
-
-function preset(fn, presetArgs, context) {
-  return function (...args) {
-    return fn.apply(context, presetArgs.concat(args));
-  };
-}
-
-const preventFast = preset(preventFastExecution, [30]);
-
-function each(items, callback, context) {
-  for(var i = 0; i < items.length; i++) {
-    callback.call(context, items[i], i, items);
-  }
-}
+const {preset, preventFast, each} = require('./_helpers');
 
 function toggle(elem, className, e) {
   e.stopPropagation();
