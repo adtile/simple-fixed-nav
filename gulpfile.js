@@ -1,12 +1,17 @@
-var path = require('path')
-    ,gulp =  require('gulp')
-    ,browserify = require('gulp-browserify')
-    ,connect =  require('gulp-connect')
-    ,less = require("gulp-less")
-    ,ejs = require("gulp-ejs")
-    ,clean = require('gulp-clean')
-    ,src = "./src"
-    ,dest = "./dist";
+var path          = require('path')
+var fs            = require('fs');
+var browserify    = require('browserify');
+var through2      = require('through2');
+var babelify      = require('babelify');
+var gulp          = require('gulp');
+var uglify        = require('gulp-uglify');
+var connect       = require('gulp-connect');
+var less          = require("gulp-less");
+var ejs           = require("gulp-ejs");
+var clean         = require('gulp-clean');
+
+var src = "./src";
+var dest = "./dist";
 
 function lessTask() {
   gulp.src([path.join(src, "styles/**/*.less"), '!' + path.join(src, "styles/**/_*.less")])
@@ -28,10 +33,18 @@ function ejsTask() {
 }
 
 function es6Task() {
-  gulp.src([path.join(src, "scripts/*.js"), '!' + path.join(src, "scripts/_*.js")], {read: false })
-    .pipe(browserify({
-      transform: ['babelify']
+  gulp.src([path.join(src, "scripts/*.js"), '!' + path.join(src, "scripts/_*.js")])
+    .pipe(through2.obj(function (file, enc, next){
+      browserify(file.path)
+        .transform(babelify, {
+          presets: ["es2015"]
+        })
+        .bundle(function(err, res){
+          file.contents = res;
+          next(null, file);
+        });
     }))
+    .pipe(uglify())
     .pipe(gulp.dest(path.join(dest, "scripts")))
     .pipe(connect.reload());
 }
