@@ -1,24 +1,7 @@
-.n-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3.5rem;
-}
-.n-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3.5rem;
-  z-index: 10;
-  background-color: white;
-}
 .n-wrapper {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
 }
 .n-wrapper div {
@@ -28,39 +11,64 @@
   width: 100%;
   height: 100%;
 }
+.n-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+}
+.n-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  z-index: 10;
+  background-color: white;
+}
+.n-nav .n-links,
+.n-nav .n-item,
+.n-nav .n-anchor,
+.n-nav .n-input {
+  height: 100%;
+  line-height: 4rem;
+}
 .n-logo,
 .n-links {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3.5rem;
+  height: 4rem;
 }
 .n-logo *,
 .n-links * {
   display: inline-block;
+  position: relative;
 }
 .n-logo {
   width: auto;
-  max-height: 3.5rem;
+  max-height: 4rem;
   background-image: url("http://www.adtile.me/img/logo-footer.png");
   background-size: auto 80%;
   background-position: 0.3rem center;
   background-repeat: no-repeat;
-  padding-left: 3.5rem;
+  background-color: transparent;
+  padding-left: 4rem;
   z-index: 11;
+}
+.n-logo p {
+  margin: 0;
 }
 .n-links {
   margin: 0;
+  padding: 0;
   text-align: right;
+  height: 0;
 }
-.n-links li {
+.n-links .n-item {
   list-style: none;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 .n-anchor {
   color: inherit;
@@ -70,34 +78,33 @@
   display: none;
 }
 @media (max-width: 900px) {
-  .n-links {
-    top: 100%;
+  .n-links.n-links {
+    position: fixed;
+    top: 3.94rem;
     height: auto;
-    max-height: 14rem;
+    max-height: 16rem;
     overflow: auto;
     background-color: white;
-    display: block;
     z-index: 100;
-    padding-top: 0.9rem;
+    padding: 0.9rem 0.2rem 0.9rem 4rem;
     text-align: left;
     display: none;
   }
-  .n-active .n-links {
+  .n-active .n-links.n-links {
     display: block;
   }
-  .n-links li {
+  .n-active .n-links.n-links * {
+    height: auto;
+    line-height: 1rem;
     display: block;
-  }
-  .n-logo p {
-    display: none;
   }
   .n-burger {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4rem;
+    height: 4rem;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;

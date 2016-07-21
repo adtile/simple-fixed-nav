@@ -2,10 +2,31 @@
 
 // VARIABLES
 // -----------------------
-@height: 3.5rem;
+@height: 4rem;
 @background-color: white;
 @burger-color: black;
 @mobile: 900px;
+
+// HELPERS
+// -----------------------
+
+// n-wrapper is just a container for the developers
+// to apply specific classes or @media.
+.n-wrapper {
+  position: relative;
+  top: 0; left: 0;
+  height: 100%;
+  // "width:100%" removed on purpose so it can resize
+  // to margin and padding from the parent.
+
+  // div is needed to prevent rules from colliding
+  div {
+    position: relative;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
 
 // STYLES
 // -----------------------
@@ -23,21 +44,12 @@
   height: @height;
   z-index: 10;
   background-color: @background-color;
-}
 
-.n-wrapper {
-  position: relative;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  div {
-    position: relative;
-    top: 0; left: 0;
-    width: 100%;
+  .n-links, .n-item, .n-anchor, .n-input {
     height: 100%;
+    line-height: @height;
   }
 }
-
 
 .n-logo,
 .n-links {
@@ -47,30 +59,33 @@
   height: @height;
   * {
     display: inline-block;
+    position: relative;
   }
 }
 
 .n-logo {
   width: auto;
   max-height: @height;
+  // default image
   background-image: url("http://www.adtile.me/img/logo-footer.png");
   background-size: auto 80%;
   background-position: 0.3rem center;
   background-repeat: no-repeat;
+  background-color: transparent;
   padding-left: @height;
   z-index: 11;
+  p {
+    margin: 0;
+  }
 }
 
 .n-links {
   margin: 0;
+  padding: 0;
   text-align: right;
-  li {
+  height: 0;
+  .n-item {
     list-style: none;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    transform: translateY(-50%);
   }
 }
 
@@ -84,28 +99,33 @@
 }
 
 .breakpoint(@mobile, {
-  .n-links {
-    top: 100%;
+  .n-links.n-links {
+    // UL is fixed on mobile to prevent n-wrapper
+    // to leave a gap between the screen and the nav.
+    position: fixed;
+    top: @height - 0.06rem;
     height: auto;
     max-height: @height * 4;
-    overflow: auto;
+    overflow: auto; // allows to scroll on the website
     background-color: @background-color;
-    display: block;
     z-index: 100;
-    padding-top: 0.9rem;
+    padding: 0.9rem 0.2rem 0.9rem @height;
     text-align: left;
     display: none;
 
     .n-active & { 
       display: block; 
+      * {
+        height: auto;
+        line-height: 1rem;
+        display: block;
+      }
     }
-    li { display: block; }
   }
-  .n-logo {
-    p {
-      display: none;
-    }
-  }
+
+  // copied but modified a bit from:
+  // https://github.com/adtile/adtile-site-2015/blob/master/source/css/_header.css.scss#L189-L232
+  // https://github.com/adtile/adtile-site-2015/blob/master/source/layouts/layout_plain.erb#L25-L29
   .n-burger {
     display: block;
     position: absolute;
